@@ -74,8 +74,8 @@ jobs:
       - name: Deploy site
         uses: ./.github/actions/deploy-s3-js
         env:
-          AWS_ACCESS_KEY_ID: AKIAWJXG2UZOQJPJLI4P
-          AWS_SECRET_ACCESS_KEY: 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
+          AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+          AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
         with:
           bucket: mfp-vasili-bucket
           bucketRegion: eu-west-1
