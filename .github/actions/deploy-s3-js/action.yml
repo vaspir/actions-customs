@@ -1,5 +1,17 @@
 name: 'Deploy to AWS s3'
 description: 'Deploy files to s3 in AWS'
+inputs:
+  bucket:
+    description: 'S3 bucket name'
+    required: true
+    default: mfp-vasili-bucket
+  bucket-region:
+    description: 'The region of the s3 bucket'
+    required: true
+    default: eu-west-1
+  dist-folder:
+    description: 'The folder containing the default file'
+    required: true
 runs:
   using: 'node20'
   main: 'main.js'
