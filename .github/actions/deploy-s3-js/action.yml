@@ -12,6 +12,9 @@ inputs:
   dist-folder:
     description: 'The folder containing the default file'
     required: true
+outputs:
+  website-url:
+    description: 'URL of a static website'
 runs:
   using: 'node20'
   main: 'main.js'

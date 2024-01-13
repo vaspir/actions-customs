@@ -11,7 +11,8 @@ function run() {
   // 2. Upload file to s3
   const baseUri = `s3://${bucket}`;
   exec.exec(`aws s3 sync ${distFolder} ${baseUri} --region ${bucketRegion}`);
-  core.notice('Hello from my javascript action!')
+  const websiteUrl = `https://${bucket}.s3-website-${bucketRegion}.amazonaws.com`;
+  core.setOutput('websiteUrl', websiteUrl);
 }
 
 run();
