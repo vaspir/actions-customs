@@ -8,7 +8,7 @@ inputs:
   bucket-region:
     description: 'The region of the s3 bucket'
     required: true
-    default: eu-west-1
+    default: 'eu-west-1'
   dist-folder:
     description: 'The folder containing the default file'
     required: true
@@ -16,5 +16,5 @@ outputs:
   website-url:
     description: 'URL of a static website'
 runs:
-  using: docker
-  image: Dockerfile
+  using: 'docker'
+  image: 'Dockerfile'

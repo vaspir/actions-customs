@@ -59,6 +59,9 @@ jobs:
           name: dist-files
           path: dist
   deploy:
+    permissions:
+      id-token: write
+      contents: read
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -71,12 +74,14 @@ jobs:
           path: ./dist
       - name: Output contents
         run: ls
+      - name: Get aws permissions
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: arn:aws:iam::433202046557:role/s3-full-access-for-identity-provider
+          aws-region: eu-west-1
       - name: Deploy site
         id: deploy
         uses: ./.github/actions/deploy-s3-docker
-        env:
-          AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
-          AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
         with:
           bucket: mfp-vasili-bucket
           bucketRegion: eu-west-1
